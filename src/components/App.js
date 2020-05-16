@@ -3,13 +3,12 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link,
   Redirect,
 } from "react-router-dom";
 
 import MainPage from "../pages/index";
 import NotFoundPage from "../pages/404";
-import QuizTakingPage from "../pages/quizTaking";
+import QuizTakingPage from "../pages/quizTakingPage";
 import "../App.css";
 
 class App extends React.Component {

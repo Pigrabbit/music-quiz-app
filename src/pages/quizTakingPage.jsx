@@ -36,13 +36,13 @@ class QuizTakingPage extends React.Component {
         <section className="container">
           <h1>Here comes the Quiz</h1>
           <h3>Category: {this.state.category}</h3>
-          {this.state.problems.map((problem) => {
+          {this.state.problems.map((problem, index) => {
             return (
-              <div className="problem">
+              <div className="problem" key={index}>
                 <h3 className="problem__description">{problem.problemDescription}</h3>
                 <ul className="problem__options">
-                  {problem.options.map(option => {
-                    return <li className="problem__options__option">{option}</li>
+                  {problem.options.map((option, idx) => {
+                    return <li className="problem__options__option" key={idx}>{option}</li>
                   })}
                 </ul>
               </div>
