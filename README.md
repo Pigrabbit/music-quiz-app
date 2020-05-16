@@ -1,1 +1,1 @@
-# Music Quis App
+# Music Quiz App

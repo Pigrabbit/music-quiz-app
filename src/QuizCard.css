@@ -1,0 +1,13 @@
+.quizcard {
+    display: grid;
+    width: 500px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    border: 3px solid gray;
+    padding: 50px, 50px;
+}
+
+
+.quizcard__startBtn {
+    width: 100px;
+}
