@@ -23,22 +23,20 @@ class AudioPlayer extends React.Component {
         playerVars: {
             autoplay: this.state.autoplay,
             loop: this.state.loop,
-            start: this.state.startSecond,
-            end: this.state.endSecond,
+            start: this.props.start,
+            end: this.props.end,
             wmode: "opaque",
             origin: ORIGIN_URL,
         },
     };
     this.state.controlButton = playButton;
     this.state.videoID = this.props.videoID;
-    this.state.startSecond = this.props.start;
-    this.state.endSecond = this.props.end;
 
     this.audioPlayer = React.createRef();
   }
 
   state = {
-    videoID: "t7X8qhESIfs",
+    videoID: "",
     autoplay: "0",
     loop: "1",
     player: null,

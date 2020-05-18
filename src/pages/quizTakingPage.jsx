@@ -3,11 +3,11 @@ import Header from "../components/Header.js";
 import fetchProblems from "../data";
 import AudioPlayer from "../components/AudioPlayer.js";
 
+const API_URI = "http://localhost:3900/api/problems"
+
 class QuizTakingPage extends React.Component {
   constructor(props) {
     super(props);
-    console.log("quiztaking contructed");
-    console.log(this.props.location.state.category);
     this.state.category = this.props.location.state.category;
   }
 
@@ -16,20 +16,20 @@ class QuizTakingPage extends React.Component {
     problems: [],
   };
 
-  // Todo: get Problems and answers from backend
-  getMusicProblems() {
-    const problems = fetchProblems();
+  async fetchMusicProblems() {
+    const response = await fetch(API_URI);
+    const problems = await response.json();
+
     this.setState({ problems }, () => {
-      console.log(this.state)
+      console.log(this.state.problems);
     });
   }
 
   componentDidMount() {
-    this.getMusicProblems();
+    this.fetchMusicProblems();
   }
 
   // Todo: add multiple choice component
-  // Todo: get videoID and start, end info from BE
   render() {
     return (
       <div className="wrapper">
@@ -37,19 +37,15 @@ class QuizTakingPage extends React.Component {
         <section className="container">
           <h1>Here comes the Quiz</h1>
           <h3>Category: {this.state.category}</h3>
-          <AudioPlayer videoID="t7X8qhESIfs" start="5" end="15" />
-          {/* {this.state.problems.map((problem, index) => {
+          {this.state.problems.map((problem) => {
             return (
-              <div className="problem" key={index}>
-                <h3 className="problem__description">{problem.problemDescription}</h3>
-                <ul className="problem__options">
-                  {problem.options.map((option, idx) => {
-                    return <li className="problem__options__option" key={idx}>{option}</li>
-                  })}
-                </ul>
-              </div>
+              <AudioPlayer
+                videoID={problem.videoID}
+                start={problem.start}
+                end={problem.end}
+              />
             );
-          })} */}
+          })}
         </section>
       </div>
     );
