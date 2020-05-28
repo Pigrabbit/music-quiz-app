@@ -1,6 +1,5 @@
 import React from "react";
-import Header from "../components/Header.js";
-import fetchProblems from "../data";
+import Header from "../components/Header";
 import ProblemBox from "../components/ProblemBox";
 
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -31,14 +30,7 @@ class QuizTakingPage extends React.Component {
   componentDidMount() {
     this.fetchMusicProblems();
   }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.problems !== prevState.problems) {
-  //     this.setState({});
-  //   }
-  // }
-
-  // Todo: add multiple choice component
+  
   render() {
     return (
       <DndProvider backend={HTML5Backend}>

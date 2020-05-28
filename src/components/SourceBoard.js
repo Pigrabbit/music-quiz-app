@@ -2,12 +2,12 @@ import React, { useContext, useState, useEffect } from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../utils/items";
 import { CardContext } from "./ProblemBox";
-import "../Board.css";
 import AnswerCard from "./AnswerCard";
 
-const Board = (props) => {
-  const { chooseAnswer } = useContext(CardContext);
+const SourceBoard = (props) => {
+  const { unchooseAnswer } = useContext(CardContext);
   const [cards, setCards] = useState(props.cards);
+
   useEffect(() => {
     setCards(props.cards);
   }, [props.cards]);
@@ -15,7 +15,7 @@ const Board = (props) => {
   const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.CARD,
     drop: (item, monitor) => {
-      chooseAnswer(item.id);
+      unchooseAnswer(item.id);
     },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
@@ -24,16 +24,15 @@ const Board = (props) => {
 
   return (
     <div
-      className="board"
+      className="source-board"
       ref={drop}
-      style={{ backgroundColor: isOver ? "#26de81" : "#d1d8e0" }}
     >
-      <h3>Move answer here</h3>
+      <h3>options</h3>
       {cards.map((card, idx) => {
-        return <AnswerCard content={card.content} id={card._id} />;
+        return <AnswerCard content={card.content} id={card.id} />;
       })}
     </div>
   );
 };
 
-export default Board;
+export default SourceBoard;

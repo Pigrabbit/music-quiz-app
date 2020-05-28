@@ -1,11 +1,13 @@
 import React, { createContext, useState } from "react";
 import AudioPlayer from "./AudioPlayer";
-import Board from "./Board";
+import TargetBoard from "./TargetBoard";
+import SourceBoard from "./SourceBoard";
 import "../ProblemBox.css";
 import AnswerCard from "./AnswerCard";
 
 export const CardContext = createContext({
-  chooseItem: null,
+  chooseAnswer: null,
+  unchooseAnswer: null,
 });
 
 const ProblemBox = (props) => {
@@ -36,8 +38,16 @@ const ProblemBox = (props) => {
     );
   };
 
+  const unchooseAnswer = (id) => {
+    const chosenAnswer = answerList.filter((item) => item.id === id);
+    chosenAnswer[0].status = "notChosen";    
+    setAnswerList(
+      answerList.filter((item) => item.id !== id).concat(chosenAnswer[0])
+    );
+  }
+
   return (
-    <CardContext.Provider value={{ chooseAnswer }}>
+    <CardContext.Provider value={{ chooseAnswer, unchooseAnswer }}>
       <div className="problem-box">
         <AudioPlayer
           className="audio-player"
@@ -45,15 +55,17 @@ const ProblemBox = (props) => {
           start={problem.startSeconds}
           end={problem.endSeconds}
         />
-        <div className="answer-box">
+        {/* <div className="answer-box">
           {answerList
             .filter((item, idx) => item.status === "notChosen")
             .map((item, idx) => {
               return <AnswerCard content={item.content} id={item.id} />;
             })}
-        </div>
-        <Board
-          className="board"
+        </div> */}
+        <SourceBoard
+          cards={answerList.filter((item, idx) => item.status === "notChosen")}
+        />
+        <TargetBoard
           cards={answerList.filter((item, idx) => item.status === "chosen")}
         />
       </div>
