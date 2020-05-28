@@ -1,9 +1,12 @@
 import React from "react";
 import Header from "../components/Header.js";
 import fetchProblems from "../data";
-import AudioPlayer from "../components/AudioPlayer.js";
+import ProblemBox from "../components/ProblemBox";
 
-const API_URI = "http://localhost:3900/api/problems"
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
+
+const API_URI = "http://localhost:3900/api/problems";
 
 class QuizTakingPage extends React.Component {
   constructor(props) {
@@ -21,7 +24,7 @@ class QuizTakingPage extends React.Component {
     const problems = await response.json();
 
     this.setState({ problems }, () => {
-      console.log(this.state.problems);
+      // console.log(this.state.problems);
     });
   }
 
@@ -29,25 +32,27 @@ class QuizTakingPage extends React.Component {
     this.fetchMusicProblems();
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.problems !== prevState.problems) {
+  //     this.setState({});
+  //   }
+  // }
+
   // Todo: add multiple choice component
   render() {
     return (
-      <div className="wrapper">
-        <Header />
-        <section className="container">
-          <h1>Here comes the Quiz</h1>
-          <h3>Category: {this.state.category}</h3>
-          {this.state.problems.map((problem) => {
-            return (
-              <AudioPlayer
-                videoID={problem.videoID}
-                start={problem.start}
-                end={problem.end}
-              />
-            );
-          })}
-        </section>
-      </div>
+      <DndProvider backend={HTML5Backend}>
+        <div className="wrapper">
+          <Header />
+          <section className="container">
+            <h1>Here comes the Quiz</h1>
+            <h3>Category: {this.state.category}</h3>
+            {this.state.problems.map((problem) => {
+              return <ProblemBox problem={problem} />;
+            })}
+          </section>
+        </div>
+      </DndProvider>
     );
   }
 }

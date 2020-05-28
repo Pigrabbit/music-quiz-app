@@ -1,0 +1,8 @@
+.answer-box {
+    border: 2px solid gray;
+    width: 100%;
+    display: grid;
+    grid-gap: 5px;
+    justify-content: center;
+    align-content: space-between;
+}

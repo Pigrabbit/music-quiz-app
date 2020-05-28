@@ -1,0 +1,33 @@
+.problem-box {
+    border: 3px solid gray;
+    width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 300px;
+    justify-content: space-evenly;
+}
+
+.audio-player {
+    grid-column: 2 /3;
+    grid-row: 1/ 2;
+}
+
+.answer-box {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+
+    border: 2px solid gray;
+    width: 100%;
+    display: grid;
+    grid-gap: 5px;
+    justify-content: center;
+    align-content: space-between;
+}
+
+.board {
+    grid-column: 2 / -1;
+    grid-row: 2 / 3;
+    width: 100%;
+    display: grid;
+    justify-content: space-evenly;
+}

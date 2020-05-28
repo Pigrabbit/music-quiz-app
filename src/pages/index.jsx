@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header.js";
-import QuizCard from "../components/QuizCard.js";
+import Category from "../components/Category.js";
 
 class MainPage extends React.Component {
   // Todo: get Categories from Backend
@@ -15,7 +15,7 @@ class MainPage extends React.Component {
         <section className="container">
           <h1>FROM JSX</h1>
           {this.state.categories.map((category, idx) => {
-            return <QuizCard key={idx} category={category} />;
+            return <Category key={idx} category={category} />;
           })}
         </section>
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../QuizCard.css";
+import "../Category.css";
 
 class QuizCard extends React.Component {
   constructor(props) {
@@ -12,10 +12,10 @@ class QuizCard extends React.Component {
 
   render() {
     return (
-      <article className="quizcard" id={this.state.category}>
-        <h4 className="quizcard__category">{this.state.category}</h4>
+      <article className="category" id={this.state.category}>
+        <h4 className="category__container">{this.state.category}</h4>
         <Link to={{ pathname: "/quiz", state: { category: this.state.category } }}>
-          <button className="quizcard__startBtn">
+          <button className="category__startBtn">
             <p>Take Quiz</p>
           </button>
         </Link>

@@ -1,4 +1,4 @@
-.quizcard {
+.category {
     display: grid;
     width: 500px;
     grid-template-columns: 1fr;
@@ -8,6 +8,6 @@
 }
 
 
-.quizcard__startBtn {
+.category__startBtn {
     width: 100px;
 }

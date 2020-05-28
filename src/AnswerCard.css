@@ -1,0 +1,9 @@
+.answer-card {
+    border: 1px solid gray;
+    background-color: burlywood;
+    width: 150px;
+    height: 50px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}

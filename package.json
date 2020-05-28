@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^7.2.1",
     "http": "0.0.1-security",
     "react": "^16.13.1",
+    "react-dnd": "^11.0.0",
+    "react-dnd-html5-backend": "^11.0.0",
     "react-dom": "^16.13.1",
     "react-frame": "^2.2.22",
     "react-router": "^5.2.0",
