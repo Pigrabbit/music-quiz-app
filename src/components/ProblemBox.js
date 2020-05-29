@@ -8,31 +8,33 @@ import AnswerCard from "./AnswerCard";
 export const CardContext = createContext({
   chooseAnswer: null,
   unchooseAnswer: null,
+  isCorrectAnswer: null,
 });
 
+const numChoice = 3;
+
 const ProblemBox = (props) => {
-  const [problem, _] = useState(props.problem);
-  const [answerList, setAnswerList] = useState([
-    {
-      id: 1,
-      content: "haha",
-      status: "notChosen",
-    },
-    {
-      id: 2,
-      content: "lalalalal",
-      status: "notChosen",
-    },
-    {
-      id: 3,
-      content: "doremi",
-      status: "notChosen",
-    },
-  ]);
+  const [problem, setProblem] = useState(props.problem);
+  const [answerList, setAnswerList] = useState(
+    props.problem.trackOptions
+      .map((track, idx) => {
+        return { id: idx, content: track, status: "notChosen", type: "track" };
+      })
+      .concat(
+        props.problem.artistOptions.map((artist, idx) => {
+          return {
+            id: idx + numChoice,
+            content: artist,
+            status: "notChosen",
+            type: "artist",
+          };
+        })
+      )
+  );
 
   const chooseAnswer = (id) => {
     const chosenAnswer = answerList.filter((item) => item.id === id);
-    chosenAnswer[0].status = "chosen";    
+    chosenAnswer[0].status = "chosen";
     setAnswerList(
       answerList.filter((item) => item.id !== id).concat(chosenAnswer[0])
     );
@@ -40,14 +42,19 @@ const ProblemBox = (props) => {
 
   const unchooseAnswer = (id) => {
     const chosenAnswer = answerList.filter((item) => item.id === id);
-    chosenAnswer[0].status = "notChosen";    
+    chosenAnswer[0].status = "notChosen";
     setAnswerList(
       answerList.filter((item) => item.id !== id).concat(chosenAnswer[0])
     );
+  };
+
+  const isCorrectAnswer = (track, artist) => {
+    return track === problem.track && artist === problem.artist;
   }
 
+
   return (
-    <CardContext.Provider value={{ chooseAnswer, unchooseAnswer }}>
+    <CardContext.Provider value={{ chooseAnswer, unchooseAnswer, isCorrectAnswer }}>
       <div className="problem-box">
         <AudioPlayer
           className="audio-player"
@@ -55,13 +62,6 @@ const ProblemBox = (props) => {
           start={problem.startSeconds}
           end={problem.endSeconds}
         />
-        {/* <div className="answer-box">
-          {answerList
-            .filter((item, idx) => item.status === "notChosen")
-            .map((item, idx) => {
-              return <AnswerCard content={item.content} id={item.id} />;
-            })}
-        </div> */}
         <SourceBoard
           cards={answerList.filter((item, idx) => item.status === "notChosen")}
         />

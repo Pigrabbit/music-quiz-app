@@ -5,7 +5,7 @@ import Category from "../components/Category.js";
 class MainPage extends React.Component {
   // Todo: get Categories from Backend
   state = {
-    categories: ["k-pop", "soundtrack", "hiphop", "00s"],
+    categories: ["k-pop"],
   };
 
   render() {

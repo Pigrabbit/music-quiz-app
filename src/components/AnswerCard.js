@@ -5,24 +5,28 @@ import "../AnswerCard.css";
 
 const AnswerCard = (props) => {
   const [content, setContent] = useState(props.content);
+  const [type, setType] = useState(props.type);
   useEffect(() => {
     setContent(props.content);
-  }, [props.content]);
+    setType(props.type);
+  }, [props.content, props.type]);
   
   const [{ isDragging }, drag] = useDrag({
     item: {
       type: ItemTypes.CARD,
       id: props.id,
       content: props.content,
+      cardType: props.type,
     },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
   });
 
+
   return (
     <div
-      className="answer-card"
+      className={`answer-card-${type}`}
       id={props.id}
       ref={drag}
       style={{ opacity: isDragging ? "0.5" : "1" }}

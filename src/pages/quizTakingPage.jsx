@@ -20,17 +20,45 @@ class QuizTakingPage extends React.Component {
 
   async fetchMusicProblems() {
     const response = await fetch(API_URI);
-    const problems = await response.json();
-
+    let problems = await response.json();
+    problems = this.generateMultipleChoice(problems);
     this.setState({ problems }, () => {
       // console.log(this.state.problems);
     });
   }
 
+  generateMultipleChoice(problems) {
+    const tracks = problems.map((problem) => problem.track);
+    const artists = problems.map((problem) => problem.artist);
+    const withMultipleChoice = problems.map((problem, idx, problems) => {
+      // 정답 (track, artist) 1 pair
+      // 오답 track 2개, artist 2개
+      const numberOfChoice = 2;
+      let trackPool = problems
+        .filter((p) => p.id !== problem.id)
+        .map((p) =>  p.track);
+      let trackOptions = trackPool
+        .sort(() => 0.5 - Math.random())
+        .slice(0, numberOfChoice);
+      trackOptions.push(problem.track);
+
+      let artistPool = problems
+        .filter((p) => p.id !== problem.id)
+        .map((p) => p.artist);
+      let artistOptions = artistPool
+        .sort(() => 0.5 - Math.random())
+        .slice(0, numberOfChoice);
+      artistOptions.push(problem.artist);
+  
+      return { ...problem, trackOptions, artistOptions };
+    });
+    return withMultipleChoice;
+  }
+
   componentDidMount() {
     this.fetchMusicProblems();
   }
-  
+
   render() {
     return (
       <DndProvider backend={HTML5Backend}>
