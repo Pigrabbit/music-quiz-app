@@ -10,7 +10,7 @@ const AnswerCard = (props) => {
     setContent(props.content);
     setType(props.type);
   }, [props.content, props.type]);
-  
+
   const [{ isDragging }, drag] = useDrag({
     item: {
       type: ItemTypes.CARD,
@@ -22,7 +22,6 @@ const AnswerCard = (props) => {
       isDragging: !!monitor.isDragging(),
     }),
   });
-
 
   return (
     <div

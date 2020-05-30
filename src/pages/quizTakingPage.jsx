@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect, createContext } from "react";
 import Header from "../components/Header";
 import ProblemBox from "../components/ProblemBox";
 
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
+import { Redirect } from "react-router";
 
 const API_URI = "http://localhost:3900/api/problems";
 
@@ -11,20 +12,42 @@ class QuizTakingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state.category = this.props.location.state.category;
+    this.incrementProblemIdx = this.incrementProblemIdx.bind(this);
+    this.incrementScore = this.incrementScore.bind(this);
   }
 
   state = {
     category: "",
+    redirect: false,
+    score: 0,
+    problemIdx: 0,
     problems: [],
   };
 
   async fetchMusicProblems() {
     const response = await fetch(API_URI);
     let problems = await response.json();
+
     problems = this.generateMultipleChoice(problems);
     this.setState({ problems }, () => {
       // console.log(this.state.problems);
     });
+  }
+
+  incrementProblemIdx() {
+    this.setState((state) => ({
+      problemIdx: state.problemIdx + 1,
+    }));
+  }
+
+  incrementScore() {
+    this.setState((state) => ({
+      score: state.score + 1,
+    }));
+  }
+
+  isEnd() {
+    return this.state.problemIdx === this.state.problems.length;
   }
 
   generateMultipleChoice(problems) {
@@ -36,7 +59,7 @@ class QuizTakingPage extends React.Component {
       const numberOfChoice = 2;
       let trackPool = problems
         .filter((p) => p.id !== problem.id)
-        .map((p) =>  p.track);
+        .map((p) => p.track);
       let trackOptions = trackPool
         .sort(() => 0.5 - Math.random())
         .slice(0, numberOfChoice);
@@ -49,7 +72,7 @@ class QuizTakingPage extends React.Component {
         .sort(() => 0.5 - Math.random())
         .slice(0, numberOfChoice);
       artistOptions.push(problem.artist);
-  
+
       return { ...problem, trackOptions, artistOptions };
     });
     return withMultipleChoice;
@@ -59,16 +82,49 @@ class QuizTakingPage extends React.Component {
     this.fetchMusicProblems();
   }
 
+  componentDidUpdate() {
+    if (this.isEnd()) {
+      this.setState({
+        redirect: true,
+      });
+    }
+  }
+
   render() {
-    return (
+    return this.state.redirect ? (
+      <Redirect
+        to={{
+          pathname: "/quizend",
+          state: {
+            numCorrect: this.state.score,
+            numTotal: this.state.problems.length,
+          },
+        }}
+      />
+    ) : (
       <DndProvider backend={HTML5Backend}>
         <div className="wrapper">
           <Header />
           <section className="container">
             <h1>Here comes the Quiz</h1>
             <h3>Category: {this.state.category}</h3>
-            {this.state.problems.map((problem) => {
-              return <ProblemBox problem={problem} />;
+            <h4>
+              Score: {this.state.score}/{this.state.problemIdx}
+            </h4>
+            {this.state.problems.map((problem, idx) => {
+              return (
+                <ProblemBox
+                  problem={problem}
+                  handler={{
+                    incrementProblemIdx: this.incrementProblemIdx,
+                    incrementScore: this.incrementScore,
+                  }}
+                  isVisible={
+                    idx === this.state.problemIdx ? "visible" : "invisible"
+                  }
+                  key={idx}
+                />
+              );
             })}
           </section>
         </div>

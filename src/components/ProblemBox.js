@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import AudioPlayer from "./AudioPlayer";
 import TargetBoard from "./TargetBoard";
 import SourceBoard from "./SourceBoard";
@@ -15,6 +15,10 @@ const numChoice = 3;
 
 const ProblemBox = (props) => {
   const [problem, setProblem] = useState(props.problem);
+  const [isVisible, setIsVisible] = useState(props.isVisible);
+  useEffect(() => {
+    setIsVisible(props.isVisible);
+  }, [props]);
   const [answerList, setAnswerList] = useState(
     props.problem.trackOptions
       .map((track, idx) => {
@@ -50,12 +54,13 @@ const ProblemBox = (props) => {
 
   const isCorrectAnswer = (track, artist) => {
     return track === problem.track && artist === problem.artist;
-  }
-
+  };
 
   return (
-    <CardContext.Provider value={{ chooseAnswer, unchooseAnswer, isCorrectAnswer }}>
-      <div className="problem-box">
+    <CardContext.Provider
+      value={{ chooseAnswer, unchooseAnswer, isCorrectAnswer }}
+    >
+      <div className={`problem-box-${isVisible}`}>
         <AudioPlayer
           className="audio-player"
           videoID={problem.videoID}
@@ -66,6 +71,7 @@ const ProblemBox = (props) => {
           cards={answerList.filter((item, idx) => item.status === "notChosen")}
         />
         <TargetBoard
+          handler={props.handler}
           cards={answerList.filter((item, idx) => item.status === "chosen")}
         />
       </div>
