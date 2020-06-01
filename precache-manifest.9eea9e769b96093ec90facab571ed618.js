@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7f807d07b99a6d26ba41f60a1db62d85",
+    "revision": "fe8c0ec3ba4fdd6d1efc53ea1c6237f3",
     "url": "/music-quiz-app/index.html"
   },
   {
-    "revision": "1419ef4fc2128567d708",
+    "revision": "06bc8840981e2c717af6",
     "url": "/music-quiz-app/static/css/main.d931b623.chunk.css"
   },
   {
-    "revision": "f5a0051bda73c1b37339",
-    "url": "/music-quiz-app/static/js/2.3efe0063.chunk.js"
+    "revision": "5c71ac432a7f54628d3b",
+    "url": "/music-quiz-app/static/js/2.086c9eb7.chunk.js"
   },
   {
     "revision": "8a9adb48f7af2062183ac70b4922c4ef",
-    "url": "/music-quiz-app/static/js/2.3efe0063.chunk.js.LICENSE.txt"
+    "url": "/music-quiz-app/static/js/2.086c9eb7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1419ef4fc2128567d708",
-    "url": "/music-quiz-app/static/js/main.4de6838c.chunk.js"
+    "revision": "06bc8840981e2c717af6",
+    "url": "/music-quiz-app/static/js/main.42455170.chunk.js"
   },
   {
     "revision": "06f607f8f2756ed4444e",
