@@ -6,7 +6,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 import { Redirect } from "react-router";
 
-const API_URI = "http://localhost:3900/api/problems";
+const API_URI = "https://musicquiz.peeraurum.com/api/problems";
 
 class QuizTakingPage extends React.Component {
   constructor(props) {
