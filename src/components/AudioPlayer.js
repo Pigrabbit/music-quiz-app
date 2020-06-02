@@ -11,7 +11,7 @@ const PLAYING = 1;
 const PAUSED = 2;
 const BUFFERING = 3;
 const VIDEO_CUED = 5;
-const ORIGIN_URL = "http://localhost:3000/music-quiz-app/#/quiz";
+const ORIGIN_URL = "https://pigrabbit.github.io/music-quiz-app/#/quiz";
 const YOUTUBE_HOST_URL = "https://www.youtube.com";
 
 class AudioPlayer extends React.Component {
