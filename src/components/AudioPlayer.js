@@ -11,7 +11,7 @@ const PLAYING = 1;
 const PAUSED = 2;
 const BUFFERING = 3;
 const VIDEO_CUED = 5;
-const ORIGIN_URL = "http://localhost:3000";
+const ORIGIN_URL = "http://localhost:3000/music-quiz-app/#/quiz";
 const YOUTUBE_HOST_URL = "https://www.youtube.com";
 
 class AudioPlayer extends React.Component {
@@ -48,8 +48,10 @@ class AudioPlayer extends React.Component {
   }
 
   onPlayerStateChange(e) {
-    if (e.data === 0) {
+    if (e.data === ENDED) {
       this.toggleControlButton(false);
+      this.state.player.seekTo(this.props.start)
+      this.state.player.pauseVideo()
     }
   }
 
