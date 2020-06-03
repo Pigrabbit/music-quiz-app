@@ -2,9 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../utils/items";
 import { CardContext } from "./ProblemBox";
-import "../TargetBoard.css";
+import "./TargetBoard.css";
 import AnswerCard from "./AnswerCard";
-import { ProblemCardContext } from "../pages/quizTakingPage";
 
 const TargetBoard = (props) => {
   const { chooseAnswer, isCorrectAnswer } = useContext(CardContext);

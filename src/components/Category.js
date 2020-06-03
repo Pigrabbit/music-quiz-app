@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../Category.css";
+import "./Category.css";
 
 class QuizCard extends React.Component {
   constructor(props) {

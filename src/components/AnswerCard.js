@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../utils/items";
-import "../AnswerCard.css";
+import "./AnswerCard.css";
 
 const AnswerCard = (props) => {
   const [content, setContent] = useState(props.content);

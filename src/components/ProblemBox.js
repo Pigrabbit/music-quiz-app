@@ -2,8 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import AudioPlayer from "./AudioPlayer";
 import TargetBoard from "./TargetBoard";
 import SourceBoard from "./SourceBoard";
-import "../ProblemBox.css";
-import AnswerCard from "./AnswerCard";
+import "./ProblemBox.css";
 
 export const CardContext = createContext({
   chooseAnswer: null,

@@ -9,7 +9,7 @@ import {
 import MainPage from "../pages/index";
 import NotFoundPage from "../pages/404";
 import QuizTakingPage from "../pages/quizTakingPage";
-import "../App.css";
+import "./App.css";
 import QuizEndPage from "../pages/quizEnd";
 
 class App extends React.Component {

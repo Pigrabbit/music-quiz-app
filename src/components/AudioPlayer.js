@@ -3,7 +3,7 @@ import YouTube from "react-youtube";
 
 import playButton from "../img/playbutton.svg";
 import pauseButton from "../img/pauseButton.svg";
-import "../AudioPlayer.css";
+import "./AudioPlayer.css";
 
 const UNSTARTED = -1;
 const ENDED = 0;
@@ -36,6 +36,7 @@ class AudioPlayer extends React.Component {
   }
 
   state = {
+    isLoading: true,
     videoID: "",
     autoplay: "0",
     loop: "1",
@@ -56,7 +57,7 @@ class AudioPlayer extends React.Component {
 
   onPlayerReady(e) {
     this.toggleControlButton(e.target.getPlayerState() !== VIDEO_CUED);
-    this.setState({ player: e.target });
+    this.setState({ player: e.target, isLoading: false });
 
     this.audioPlayer.current.addEventListener("click", () => {
       if (
@@ -75,11 +76,17 @@ class AudioPlayer extends React.Component {
   render() {
     return (
       <div className="audio-player" ref={this.audioPlayer}>
-        <img
-          src={this.state.controlButton}
-          alt="control-button"
-          className="audio-player__control-button"
-        />
+        {this.state.isLoading ? (
+          <div className="loader">
+            <span className="loader__text">Loading...</span>
+          </div>
+        ) : (
+          <img
+            src={this.state.controlButton}
+            alt="control-button"
+            className="audio-player__control-button"
+          />
+        )}
         <YouTube
           videoId={this.state.videoID}
           host={YOUTUBE_HOST_URL}
