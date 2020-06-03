@@ -3,11 +3,6 @@ import { Link } from "react-router-dom";
 import "../Header.css"
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log("header constructed");
-  }
-
   render() {
     return (
       <header className="header">

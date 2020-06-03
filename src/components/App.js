@@ -13,11 +13,6 @@ import "../App.css";
 import QuizEndPage from "../pages/quizEnd";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log("App consturcted");
-  }
-
   render() {
     return (
       <Router>
