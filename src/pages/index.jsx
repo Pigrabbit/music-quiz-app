@@ -1,9 +1,13 @@
 import React from "react";
 import Header from "../components/Header.js";
-import Category from "../components/Category.js";
+import QuizCard from "../components/QuizCard.js";
 
 class MainPage extends React.Component {
-  // Todo: get Categories from Backend
+  constructor(props) {
+    super(props)
+    localStorage.clear()
+  }
+
   state = {
     categories: ["k-pop"],
   };
@@ -15,7 +19,7 @@ class MainPage extends React.Component {
         <section className="container">
           <h1>FROM JSX</h1>
           {this.state.categories.map((category, idx) => {
-            return <Category key={idx} category={category} />;
+            return <QuizCard key={idx} category={category} />;
           })}
         </section>
       </div>

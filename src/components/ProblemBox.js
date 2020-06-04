@@ -15,9 +15,11 @@ const numChoice = 3;
 const ProblemBox = (props) => {
   const [problem, setProblem] = useState(props.problem);
   const [isVisible, setIsVisible] = useState(props.isVisible);
+
   useEffect(() => {
     setIsVisible(props.isVisible);
   }, [props]);
+
   const [answerList, setAnswerList] = useState(
     props.problem.trackOptions
       .map((track, idx) => {

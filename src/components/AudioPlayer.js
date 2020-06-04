@@ -11,8 +11,8 @@ const PLAYING = 1;
 const PAUSED = 2;
 const BUFFERING = 3;
 const VIDEO_CUED = 5;
-const ORIGIN_URL = process.env.ORIGIN_URL;
-const YOUTUBE_HOST_URL = process.env.YOUTUBE_HOST_URL;
+const ORIGIN_URL = process.env.REACT_APP_ORIGIN_URL;
+const YOUTUBE_HOST_URL = process.env.REACT_APP_YOUTUBE_HOST_URL;
 
 class AudioPlayer extends React.Component {
   constructor(props) {
@@ -31,7 +31,6 @@ class AudioPlayer extends React.Component {
     };
     this.state.controlButton = playButton;
     this.state.videoID = this.props.videoID;
-
     this.audioPlayer = React.createRef();
   }
 
@@ -78,7 +77,6 @@ class AudioPlayer extends React.Component {
       <div className="audio-player" ref={this.audioPlayer}>
         {this.state.isLoading ? (
           <div className="loader">
-            <span className="loader__text">Loading...</span>
           </div>
         ) : (
           <img

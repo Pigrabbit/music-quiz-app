@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Category.css";
+import "./QuizCard.css";
 
 class QuizCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state.category = props.category;
+    this.state.category = this.props.category;
   }
 
   state = {};

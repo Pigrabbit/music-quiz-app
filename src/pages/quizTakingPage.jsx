@@ -6,12 +6,24 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 import { Redirect } from "react-router";
 
-const API_URI = "https://musicquiz.peeraurum.com/api/problems";
+const API_URL = process.env.REACT_APP_API_URL;
+// const API_URL = "https://musicquiz.peeraurum.com/api/problems";
 
 class QuizTakingPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state.category = this.props.location.state.category;
+  
+    this.state.category =
+      this.props.location.state === undefined
+        ? localStorage.getItem("category")
+        : this.props.location.state.category;
+    if (this.props.location.state !== undefined) {
+      localStorage.setItem(
+        "category",
+        JSON.stringify(this.props.location.state.category)
+      );
+    }
+
     this.incrementProblemIdx = this.incrementProblemIdx.bind(this);
     this.incrementScore = this.incrementScore.bind(this);
   }
@@ -24,23 +36,23 @@ class QuizTakingPage extends React.Component {
     problems: [],
   };
 
-  async fetchMusicProblems() {
-    const response = await fetch(API_URI);
+  async fetchMusicProblems(category, problemIdx, score) {
+    const response = await fetch(API_URL);
     let problems = await response.json();
 
     problems = this.generateMultipleChoice(problems);
-    this.setState({ problems }, () => {
-      // console.log(this.state.problems);
-    });
+    this.setState({ problems, category, problemIdx, score });
   }
 
   incrementProblemIdx() {
+    localStorage.setItem("problemIdx", JSON.stringify(this.state.problemIdx + 1));
     this.setState((state) => ({
       problemIdx: state.problemIdx + 1,
     }));
   }
 
   incrementScore() {
+    localStorage.setItem("score", JSON.stringify(this.state.score + 1));
     this.setState((state) => ({
       score: state.score + 1,
     }));
@@ -79,7 +91,17 @@ class QuizTakingPage extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchMusicProblems();
+    const category = localStorage.getItem("category");
+    const problemIdx =
+      localStorage.getItem("problemIdx") === null
+        ? 0
+        : JSON.parse(localStorage.getItem("problemIdx"));
+    const score =
+      localStorage.getItem("score") === null
+        ? 0
+        : JSON.parse(localStorage.getItem("score"));
+  
+    this.fetchMusicProblems(category, problemIdx, score);
   }
 
   componentDidUpdate() {
@@ -120,7 +142,7 @@ class QuizTakingPage extends React.Component {
                     incrementScore: this.incrementScore,
                   }}
                   isVisible={
-                    idx === this.state.problemIdx ? "visible" : "invisible"
+                    idx == this.state.problemIdx ? "visible" : "invisible"
                   }
                   key={idx}
                 />
