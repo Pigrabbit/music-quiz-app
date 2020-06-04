@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/music-quiz-app/static/css/main.cbd3b0f3.chunk.css",
-    "main.js": "/music-quiz-app/static/js/main.8b71ed88.chunk.js",
-    "main.js.map": "/music-quiz-app/static/js/main.8b71ed88.chunk.js.map",
+    "main.css": "/music-quiz-app/static/css/main.f6b71082.chunk.css",
+    "main.js": "/music-quiz-app/static/js/main.2c1d43c4.chunk.js",
+    "main.js.map": "/music-quiz-app/static/js/main.2c1d43c4.chunk.js.map",
     "runtime-main.js": "/music-quiz-app/static/js/runtime-main.fc2182d1.js",
     "runtime-main.js.map": "/music-quiz-app/static/js/runtime-main.fc2182d1.js.map",
-    "static/js/2.336afda5.chunk.js": "/music-quiz-app/static/js/2.336afda5.chunk.js",
-    "static/js/2.336afda5.chunk.js.map": "/music-quiz-app/static/js/2.336afda5.chunk.js.map",
+    "static/js/2.5925deb9.chunk.js": "/music-quiz-app/static/js/2.5925deb9.chunk.js",
+    "static/js/2.5925deb9.chunk.js.map": "/music-quiz-app/static/js/2.5925deb9.chunk.js.map",
     "index.html": "/music-quiz-app/index.html",
-    "precache-manifest.825681fc02816b4ce33140ee4ae7c6f7.js": "/music-quiz-app/precache-manifest.825681fc02816b4ce33140ee4ae7c6f7.js",
+    "precache-manifest.92046ddd3c499e386b16adb9ecf24b75.js": "/music-quiz-app/precache-manifest.92046ddd3c499e386b16adb9ecf24b75.js",
     "service-worker.js": "/music-quiz-app/service-worker.js",
-    "static/css/main.cbd3b0f3.chunk.css.map": "/music-quiz-app/static/css/main.cbd3b0f3.chunk.css.map",
-    "static/js/2.336afda5.chunk.js.LICENSE.txt": "/music-quiz-app/static/js/2.336afda5.chunk.js.LICENSE.txt",
+    "static/css/main.f6b71082.chunk.css.map": "/music-quiz-app/static/css/main.f6b71082.chunk.css.map",
+    "static/js/2.5925deb9.chunk.js.LICENSE.txt": "/music-quiz-app/static/js/2.5925deb9.chunk.js.LICENSE.txt",
     "static/media/pauseButton.svg": "/music-quiz-app/static/media/pauseButton.e55175de.svg",
     "static/media/playbutton.svg": "/music-quiz-app/static/media/playbutton.75be2c69.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.fc2182d1.js",
-    "static/js/2.336afda5.chunk.js",
-    "static/css/main.cbd3b0f3.chunk.css",
-    "static/js/main.8b71ed88.chunk.js"
+    "static/js/2.5925deb9.chunk.js",
+    "static/css/main.f6b71082.chunk.css",
+    "static/js/main.2c1d43c4.chunk.js"
   ]
 }
