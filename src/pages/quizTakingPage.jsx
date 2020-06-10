@@ -7,12 +7,11 @@ import { DndProvider } from "react-dnd";
 import { Redirect } from "react-router";
 
 const API_URL = process.env.REACT_APP_API_URL;
-// const API_URL = "https://musicquiz.peeraurum.com/api/problems";
 
 class QuizTakingPage extends React.Component {
   constructor(props) {
     super(props);
-  
+
     this.state.category =
       this.props.location.state === undefined
         ? localStorage.getItem("category")
@@ -38,14 +37,22 @@ class QuizTakingPage extends React.Component {
 
   async fetchMusicProblems(category, problemIdx, score) {
     const response = await fetch(API_URL);
-    let problems = await response.json();
+    const { problems } = await response.json();
 
-    problems = this.generateMultipleChoice(problems);
-    this.setState({ problems, category, problemIdx, score });
+    const problemWithMultipleChoice = this.generateMultipleChoice(problems);
+    this.setState({
+      problems: problemWithMultipleChoice,
+      category,
+      problemIdx,
+      score,
+    });
   }
 
   incrementProblemIdx() {
-    localStorage.setItem("problemIdx", JSON.stringify(this.state.problemIdx + 1));
+    localStorage.setItem(
+      "problemIdx",
+      JSON.stringify(this.state.problemIdx + 1)
+    );
     this.setState((state) => ({
       problemIdx: state.problemIdx + 1,
     }));
@@ -100,7 +107,7 @@ class QuizTakingPage extends React.Component {
       localStorage.getItem("score") === null
         ? 0
         : JSON.parse(localStorage.getItem("score"));
-  
+
     this.fetchMusicProblems(category, problemIdx, score);
   }
 
