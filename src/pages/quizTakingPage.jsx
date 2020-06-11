@@ -35,17 +35,12 @@ class QuizTakingPage extends React.Component {
     problems: [],
   };
 
-  async fetchMusicProblems(category, problemIdx, score) {
+  async fetchMusicProblems() {
     const response = await fetch(API_URL);
     const { problems } = await response.json();
 
     const problemWithMultipleChoice = this.generateMultipleChoice(problems);
-    this.setState({
-      problems: problemWithMultipleChoice,
-      category,
-      problemIdx,
-      score,
-    });
+    return problemWithMultipleChoice;
   }
 
   incrementProblemIdx() {
@@ -108,7 +103,19 @@ class QuizTakingPage extends React.Component {
         ? 0
         : JSON.parse(localStorage.getItem("score"));
 
-    this.fetchMusicProblems(category, problemIdx, score);
+    this.fetchMusicProblems()
+      .then((problems) => {
+        console.log(problems);
+        this.setState({
+          problems,
+          category,
+          problemIdx,
+          score,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   componentDidUpdate() {
@@ -135,7 +142,9 @@ class QuizTakingPage extends React.Component {
         <div className="wrapper">
           <Header />
           <section className="container">
-            <h1>Here comes the Quiz</h1>
+            <h3 className="instruction">
+              Move a artist card and a track card to the the right!
+            </h3>
             <h3>Category: {this.state.category}</h3>
             <h4>
               Score: {this.state.score}/{this.state.problemIdx}

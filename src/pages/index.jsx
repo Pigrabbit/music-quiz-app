@@ -17,7 +17,6 @@ class MainPage extends React.Component {
       <div className="wrapper">
         <Header />
         <section className="container">
-          <h1>FROM JSX</h1>
           {this.state.categories.map((category, idx) => {
             return <QuizCard key={idx} category={category} />;
           })}

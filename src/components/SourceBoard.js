@@ -27,7 +27,6 @@ const SourceBoard = (props) => {
       className="source-board"
       ref={drop}
     >
-      <h3>options</h3>
       {cards.map((card, idx) => {
         return <AnswerCard content={card.content} id={card.id} type={card.type} key={idx}/>;
       })}

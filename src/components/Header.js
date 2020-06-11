@@ -7,11 +7,11 @@ class Header extends React.Component {
     return (
       <header className="header">
         <Link to={{pathname: "/"}} >
-          <button className="header__homeBtn">
+          <button className="header__home-btn">
             <p> Back to home </p>
           </button>
         </Link>
-        <h3>This is a header</h3>
+        <h3 className="header__text">Music Quiz APP</h3>
       </header>
     );
   }

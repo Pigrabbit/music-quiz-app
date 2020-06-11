@@ -57,7 +57,7 @@ const TargetBoard = (props) => {
       ref={drop}
       style={{ backgroundColor: isOver ? "#26de81" : "#d1d8e0" }}
     >
-      <h3>Move answer here</h3>
+      <h3 className="target-board__instruction">Move answer here</h3>
       {cards.map((card, idx) => {
         return (
           <AnswerCard
@@ -68,7 +68,7 @@ const TargetBoard = (props) => {
           />
         );
       })}
-      <button className="submit" onClick={handleClick}>
+      <button className="target-board__submit-btn" onClick={handleClick}>
         submit
       </button>
     </div>
