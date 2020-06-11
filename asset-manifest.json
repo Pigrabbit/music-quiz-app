@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/music-quiz-app/static/css/main.f6b71082.chunk.css",
-    "main.js": "/music-quiz-app/static/js/main.836723d2.chunk.js",
-    "main.js.map": "/music-quiz-app/static/js/main.836723d2.chunk.js.map",
+    "main.css": "/music-quiz-app/static/css/main.88c14360.chunk.css",
+    "main.js": "/music-quiz-app/static/js/main.32c90bc3.chunk.js",
+    "main.js.map": "/music-quiz-app/static/js/main.32c90bc3.chunk.js.map",
     "runtime-main.js": "/music-quiz-app/static/js/runtime-main.fc2182d1.js",
     "runtime-main.js.map": "/music-quiz-app/static/js/runtime-main.fc2182d1.js.map",
     "static/js/2.5925deb9.chunk.js": "/music-quiz-app/static/js/2.5925deb9.chunk.js",
     "static/js/2.5925deb9.chunk.js.map": "/music-quiz-app/static/js/2.5925deb9.chunk.js.map",
     "index.html": "/music-quiz-app/index.html",
-    "precache-manifest.56d30c77f0db56ab78f5b0adcae286a0.js": "/music-quiz-app/precache-manifest.56d30c77f0db56ab78f5b0adcae286a0.js",
+    "precache-manifest.00c5d271363993676fbd583cd59e81ec.js": "/music-quiz-app/precache-manifest.00c5d271363993676fbd583cd59e81ec.js",
     "service-worker.js": "/music-quiz-app/service-worker.js",
-    "static/css/main.f6b71082.chunk.css.map": "/music-quiz-app/static/css/main.f6b71082.chunk.css.map",
+    "static/css/main.88c14360.chunk.css.map": "/music-quiz-app/static/css/main.88c14360.chunk.css.map",
     "static/js/2.5925deb9.chunk.js.LICENSE.txt": "/music-quiz-app/static/js/2.5925deb9.chunk.js.LICENSE.txt",
     "static/media/pauseButton.svg": "/music-quiz-app/static/media/pauseButton.e55175de.svg",
     "static/media/playbutton.svg": "/music-quiz-app/static/media/playbutton.75be2c69.svg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.fc2182d1.js",
     "static/js/2.5925deb9.chunk.js",
-    "static/css/main.f6b71082.chunk.css",
-    "static/js/main.836723d2.chunk.js"
+    "static/css/main.88c14360.chunk.css",
+    "static/js/main.32c90bc3.chunk.js"
   ]
 }
